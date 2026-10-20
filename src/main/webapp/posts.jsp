@@ -12,26 +12,56 @@
 <body>
 
 	<div class="container">
-		<div class="row">
-			<h2>Posts</h2>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Id</th>
-						<th scope="col">Conteúdo</th>
-						<th scope="col">Data</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="post" items="${posts_list}">
+		<div class="row mt-3">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<a class="btn btn-secondary" 
+				   href="${pageContext.request.contextPath}/">
+					Home
+				</a>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+				
+		<div class="row mt-3">
+			<div class="col-md-2"></div>
+			
+			<div class="col-md-8">
+				<h2>Posts</h2>
+				<table class="table table-striped">
+					<thead>
 						<tr>
-							<th scope="row">${post.getId()}</th>
-							<td>${post.getContent()}</td>
-							<td>${post.getPostDate()}</td>
+							<th scope="col">Id</th>
+							<th scope="col">Conteúdo</th>
+							<th scope="col">Data</th>
+							<th scope="col">Usuário</th>
+							<th scope="col">Ações</th>
 						</tr>
-					</c:forEach>
-				</tbody>
+					</thead>
+					<tbody>
+						<c:forEach var="post" items="${posts_list}">
+							<tr>
+								<th scope="row">${post.getId()}</th>
+								<td>${post.getContent()}</td>
+								<td>${post.getPostDate()}</td>
+								<td>${post.getUser().getName()}</td>
+								<td>
+								   <a href="${pageContext.request.contextPath}/posts/update?postId=${post.getId()}" 
+									   class="bi bi-pencil-square"></a>
+								   <a href="${pageContext.request.contextPath}/posts/delete?postId=${post.getId()}" 
+								   	   class="bi bi-trash"></a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
+				
+				<a href="${pageContext.request.contextPath}/posts/create" class="btn btn-primary">
+					Cadastrar Post
+				</a>
+			</div>
+			
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 
