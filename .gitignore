@@ -1,0 +1,5 @@
+# Pasta de compilação do Eclipse
+/build/
+
+# Artefatos do macOS
+.DS_Store
